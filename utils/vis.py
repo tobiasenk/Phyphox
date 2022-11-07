@@ -48,12 +48,12 @@ def fft(x, y):
     FFT['y'] = FFTY
     return FFT
 
-def stft(x, y, mode='stft'):
+def stft(x, y, window_width=1, mode='stft'):
     """spectrogram of a timeseries signal"""
     # constants
     dt = x[1] - x[0]
     fa = 1.0 / dt  # scan frequency
-    window_width = 10  # (native x_axis unit)
+    window_width = window_width  # (native x_axis unit)
     window = np.hanning(window_width)
     movement = window_width//16
     nperseg = int(window_width / dt)  # window width of FFT in steps. Example: 100m/0.1m = 1000 steps as window width for 100m
